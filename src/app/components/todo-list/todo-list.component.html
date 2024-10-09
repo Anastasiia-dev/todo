@@ -1,1 +1,14 @@
-<p>todo-list works!</p>
+<ng-template #noTasks>
+  <p>No task is created yet. Click the button below to start.</p>
+</ng-template>
+
+<button mat-button color="primary" (click)="openDialog()">Create New Task</button>
+
+<div class="todo-list" *ngIf="(taskList$ && taskList$ | async)!.length > 0; else noTasks">
+  <div *ngFor="let task of taskList$ | async">
+    <app-todo-item
+      [task]="task"
+      (deleteTask)="removeTaskFromList($event)"
+    ></app-todo-item>
+  </div>
+</div>

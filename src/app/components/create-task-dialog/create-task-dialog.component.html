@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Create New Task</h2>
+<mat-dialog-content class="dialog-content" [formGroup]="formGroup">
+  <mat-form-field class="dialog-content-item" appearance="outline">
+    <mat-label>Title</mat-label>
+    <input #titleInput matInput type="text" maxlength="50" formControlName="title"/>
+    <mat-hint align="end">{{titleInput.value.length}} / 256</mat-hint>
+    <mat-error *ngIf="isRequired('title')">This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="dialog-content-item" appearance="outline">
+    <mat-label>Task Description (Optional)</mat-label>
+    <textarea matInput formControlName="description" placeholder="Enter task description"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="createTask()">Create</button>
+</mat-dialog-actions>
