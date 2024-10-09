@@ -1,1 +1,10 @@
-<p>todo-item works!</p>
+<mat-card class="todo-item-card">
+    <mat-card-content class="todo-item-card-content">
+      <mat-checkbox [(ngModel)]="task.completed" color="primary" class="todo-item-card-content-checkbox"></mat-checkbox>
+      <p class="todo-item-card-content-title" [ngClass]="{'completed': task.completed}">{{task.title}}</p>
+    </mat-card-content>
+    <mat-card-actions align="end" class="todo-item-card-actions">
+      <button mat-icon-button color="primary" (click)="onDelete(task.id)"><mat-icon class="mat-18">delete</mat-icon></button>
+    </mat-card-actions>
+</mat-card>
+

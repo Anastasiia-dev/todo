@@ -1,0 +1,26 @@
+.todo-item-card {
+  margin-top: 50px;
+  width: 600px;
+  min-height: 50px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 16px;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+  }
+}
+
+::ng-deep mat-card-content.mat-mdc-card-content:first-child {
+  padding-top: 0;
+}
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
