@@ -1,3 +1,7 @@
+.list-wrapper {
+  flex: 1;
+}
+
 .todo-list {
   gap: 16px;
 }
@@ -6,8 +10,8 @@
   box-shadow: none;
   border-radius: 16px;
   margin: auto;
-  width: 700px;
   background-color: white;
+  margin: 0 16px;
 
   ::ng-deep mat-card-content.mat-mdc-card-content {
     padding: 0;

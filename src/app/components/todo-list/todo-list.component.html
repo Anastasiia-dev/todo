@@ -1,40 +1,50 @@
-<button mat-button color="primary" (click)="openDialog()" [disabled]="isAdded">
-  Create New Task
-</button>
-<ng-container *ngIf="isLoading">
-  <div class="spinner-container">
-    <mat-spinner [diameter]="30"></mat-spinner>
-    <div>Loading tasks...</div>
-  </div>
-</ng-container>
-
-<div class="todo-list-card" *ngIf="taskList$ | async">
-  <div *ngIf="isAdded; else taskList" class="adding-spinner-container">
-    <mat-spinner [diameter]="30"></mat-spinner>
-    <div>Adding task...</div>
-  </div>
-  <ng-template #taskList>
-    <div class="todo-list-card-header">
-      <div class="todo-list-title">
-        My tasks ({{ (taskList$ | async)?.length }})
-      </div>
+<div class="list-wrapper">
+  <button
+    mat-button
+    color="primary"
+    (click)="openDialog()"
+    [disabled]="isAdded"
+  >
+    Create New Task
+  </button>
+  <ng-container *ngIf="isLoading">
+    <div class="spinner-container">
+      <mat-spinner [diameter]="30"></mat-spinner>
+      <div>Loading tasks...</div>
     </div>
+  </ng-container>
 
-    <div>
-      <div
-        class="todo-list"
-        *ngIf="(taskList$ | async)?.length! > 0; else noTasks"
-      >
-        <div *ngFor="let task of (taskList$ | async)!" class="todo-list-items">
-          <app-todo-item
-            [task]="task"
-            (deleteTask)="removeTaskFromList($event)"
-          ></app-todo-item>
+  <div class="todo-list-card" *ngIf="taskList$ | async">
+    <div *ngIf="isAdded; else taskList" class="adding-spinner-container">
+      <mat-spinner [diameter]="30"></mat-spinner>
+      <div>Adding task...</div>
+    </div>
+    <ng-template #taskList>
+      <div class="todo-list-card-header">
+        <div class="todo-list-title">
+          My tasks ({{ (taskList$ | async)?.length }})
         </div>
       </div>
-      <ng-template #noTasks>
-        <div class="empty-list-message">The tasks list is empty</div>
-      </ng-template>
-    </div>
-  </ng-template>
+
+      <div>
+        <div
+          class="todo-list"
+          *ngIf="(taskList$ | async)?.length! > 0; else noTasks"
+        >
+          <div
+            *ngFor="let task of (taskList$ | async)!"
+            class="todo-list-items"
+          >
+            <app-todo-item
+              [task]="task"
+              (deleteTask)="removeTaskFromList($event)"
+            ></app-todo-item>
+          </div>
+        </div>
+        <ng-template #noTasks>
+          <div class="empty-list-message">The tasks list is empty</div>
+        </ng-template>
+      </div>
+    </ng-template>
+  </div>
 </div>
