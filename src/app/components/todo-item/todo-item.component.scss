@@ -1,7 +1,6 @@
 .todo-item-card {
-  width: 600px;
+  width: 100%;
   min-height: 50px;
-  margin: 16px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +8,7 @@
   gap: 5px;
   box-sizing: border-box;
   box-shadow: none;
-  border: 1px solid lightgrey;
+  border-radius: 20px;
 
   &-content {
     display: flex;
@@ -21,12 +20,22 @@
       margin-left: auto;
     }
   }
-}
 
-::ng-deep mat-card-content.mat-mdc-card-content:first-child {
-  padding-top: 0;
-}
+  ::ng-deep mat-card-content.mat-mdc-card-content:first-child {
+    padding-top: 0;
+  }
+
+
+}::ng-deep mat-card-content.mat-mdc-card-content {
+    padding: 0;
+    margin: 0 10px;
+  }
+
 .completed {
   text-decoration: line-through;
   color: grey;
+}
+
+button {
+  color: #f8c434;
 }

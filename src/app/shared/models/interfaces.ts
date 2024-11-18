@@ -4,5 +4,5 @@ export interface Task {
   completed: boolean;
   description?: string;
   dateType: string;
-  scheduledDate?: string;
+  scheduledDate?: string|Date;
 }

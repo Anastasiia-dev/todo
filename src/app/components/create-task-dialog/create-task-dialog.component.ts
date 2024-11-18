@@ -18,7 +18,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
 @Component({
   selector: 'app-create-task-dialog',
   standalone: true,
@@ -36,14 +35,14 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './create-task-dialog.component.html',
-  styleUrl: './create-task-dialog.component.scss',
+  styleUrls: ['./create-task-dialog.component.scss'],
 })
 export class CreateTaskDialogComponent implements OnInit {
   formGroup = new FormGroup({
     title: new FormControl<string>('', Validators.required),
     description: new FormControl<string>(''),
     dateType: new FormControl<string>('today'),
-    scheduledDate: new FormControl(null),
+    scheduledDate: new FormControl(new Date()),
   });
   quillConfig = {
     toolbar: [
