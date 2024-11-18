@@ -85,7 +85,6 @@ export class CreateTaskDialogComponent implements OnInit {
   }
 
   createTask() {
-    console.log(this.formGroup.valid)
     if (this.formGroup.valid) {
       this.dialogRef.close(this.formGroup.value);
     }
