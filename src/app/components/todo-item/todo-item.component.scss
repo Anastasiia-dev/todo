@@ -6,13 +6,20 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  padding: 16px;
+  gap: 5px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border: 1px solid lightgrey;
 
   &-content {
     display: flex;
     align-items: center;
     justify-content: start;
     gap: 20px;
+
+    button {
+      margin-left: auto;
+    }
   }
 }
 

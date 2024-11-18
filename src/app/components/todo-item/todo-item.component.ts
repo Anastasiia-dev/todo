@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../shared/models/interfaces';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-todo-item',
@@ -18,6 +19,7 @@ import { Task } from '../../shared/models/interfaces';
     NgClass,
     MatButtonModule,
     MatIconModule,
+    MatExpansionModule,
   ],
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.scss',

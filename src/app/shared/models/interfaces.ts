@@ -3,4 +3,6 @@ export interface Task {
   title: string;
   completed: boolean;
   description?: string;
+  dateType: string;
+  scheduledDate?: string;
 }

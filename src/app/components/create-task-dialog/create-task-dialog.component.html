@@ -2,14 +2,49 @@
 <mat-dialog-content class="dialog-content" [formGroup]="formGroup">
   <mat-form-field class="dialog-content-item" appearance="outline">
     <mat-label>Title</mat-label>
-    <input #titleInput matInput type="text" maxlength="50" formControlName="title"/>
-    <mat-hint align="end">{{titleInput.value.length}} / 256</mat-hint>
+    <input
+      #titleInput
+      matInput
+      type="text"
+      maxlength="50"
+      formControlName="title"
+    />
+    <mat-hint align="end">{{ titleInput.value.length }} / 50</mat-hint>
     <mat-error *ngIf="isRequired('title')">This field is required</mat-error>
   </mat-form-field>
 
+    <mat-button-toggle-group
+      formControlName="dateType"
+      class="dialog-content-date-section-toggle"
+    >
+      <mat-button-toggle value="today">Today</mat-button-toggle>
+      <mat-button-toggle value="scheduled">Scheduled</mat-button-toggle>
+    </mat-button-toggle-group>
+
+   <mat-form-field *ngIf="isScheduledTask" appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="scheduledDate"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
   <mat-form-field class="dialog-content-item" appearance="outline">
     <mat-label>Task Description (Optional)</mat-label>
-    <textarea matInput formControlName="description" placeholder="Enter task description"></textarea>
+    <textarea
+      #textarea
+      matInput
+      type="text"
+      maxlength="250"
+      formControlName="description"
+    ></textarea>
+    <mat-hint align="end">{{ textarea.value.length }} / 50</mat-hint>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

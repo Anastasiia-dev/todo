@@ -8,3 +8,29 @@
     </mat-card-actions>
 </mat-card>
 
+<!-- <mat-accordion class="todo-item-card">
+  <div class="wrapper">
+    <mat-checkbox
+      [(ngModel)]="task.completed"
+      color="primary"
+      class="todo-item-card-content-checkbox"
+    ></mat-checkbox>
+    <mat-expansion-panel
+      [disabled]="!task.description && !task.scheduledDate"
+      [ngClass]="{ 'disabled-panel': !task.description && !task.scheduledDate }"
+    >
+      <mat-expansion-panel-header class="todo-item-card-header">
+        <div
+          class="todo-item-card-content-title"
+          [ngClass]="{ completed: task.completed }"
+        >
+          {{ task.title }}
+        </div>
+      </mat-expansion-panel-header>
+      <div *ngIf="task.scheduledDate">
+    </mat-expansion-panel>
+    <button mat-icon-button color="primary" (click)="onDelete(task.id)">
+      <mat-icon class="material-icons-outlined">delete</mat-icon>
+    </button>
+  </div>
+</mat-accordion> -->

@@ -41,12 +41,13 @@ export class TodoListComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       width: '1000px',
-      height: '500px',
+      height: '700px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      console.log(result)
       if (result) {
-        this.addNewTask(result.title, result.description);
+        this.addNewTask(result);
       }
     });
   }
@@ -62,12 +63,14 @@ export class TodoListComponent implements OnInit {
       });
   }
 
-  private addNewTask(title: string, description = '') {
+  private addNewTask(result: Task) {
     const newTask: Task = {
       id: '111',
-      description,
-      title,
+      description: result.description ?? '',
+      title: result.title,
       completed: false,
+      dateType: result.dateType,
+      scheduledDate: result.scheduledDate?.toString() ?? '',
     };
 
     this.firebase
