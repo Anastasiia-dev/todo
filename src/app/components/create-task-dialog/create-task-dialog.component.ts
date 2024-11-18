@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import {
@@ -17,6 +17,9 @@ import { QuillModule } from 'ngx-quill';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSelectModule} from  '@angular/material/select';
+
+import { Priority } from '../../shared/models/interfaces';
 
 @Component({
   selector: 'app-create-task-dialog',
@@ -32,17 +35,20 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonToggleModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './create-task-dialog.component.html',
   styleUrls: ['./create-task-dialog.component.scss'],
 })
 export class CreateTaskDialogComponent implements OnInit {
-  formGroup = new FormGroup({
+  readonly priorityOptions: Priority[] =[Priority.HIGH, Priority.MEDIUM, Priority.LOW];
+  readonly formGroup = new FormGroup({
     title: new FormControl<string>('', Validators.required),
     description: new FormControl<string>(''),
     dateType: new FormControl<string>('today'),
     scheduledDate: new FormControl(new Date()),
+    priority: new FormControl<Priority>(Priority.MEDIUM),
   });
   quillConfig = {
     toolbar: [

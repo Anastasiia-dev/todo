@@ -1,10 +1,10 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../../shared/models/interfaces';
+import { Task, Priority } from '../../shared/models/interfaces';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { startWith, tap, delay, shareReplay } from 'rxjs';
+import { tap, delay, shareReplay } from 'rxjs';
 
 import { CreateTaskDialogComponent } from '../create-task-dialog/create-task-dialog.component';
 import { TodoItemComponent } from '../todo-item/todo-item.component';
@@ -51,6 +51,7 @@ export class TodoListComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateTaskDialogComponent, {
       width: '1000px',
       height: '700px',
+      panelClass: 'custom-dialog',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -85,6 +86,7 @@ export class TodoListComponent implements OnInit {
           : 'scheduled',
       scheduledDate:
         result.scheduledDate?.toString() ?? new Date().toISOString(),
+      priority: result.priority ?? Priority.MEDIUM,
     };
 
     this.firebase
@@ -97,7 +99,7 @@ export class TodoListComponent implements OnInit {
       })
       .finally(() => {
         setTimeout(() => {
-          this.isAdded = false; // Add a 500ms delay before resetting
+          this.isAdded = false;
         }, 500);
       });
   }

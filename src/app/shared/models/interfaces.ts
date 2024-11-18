@@ -5,4 +5,11 @@ export interface Task {
   description?: string;
   dateType: string;
   scheduledDate?: string|Date;
+  priority: Priority;
+}
+
+export enum Priority  {
+  HIGH = 'High',
+  MEDIUM = 'Medium',
+  LOW = 'Low',
 }

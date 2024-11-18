@@ -4,7 +4,7 @@
 
 .todo-list-card {
   box-shadow: none;
-  border-radius: 20px;
+  border-radius: 16px;
   margin: auto;
   width: 700px;
   background-color: white;
@@ -33,17 +33,13 @@
   padding: 16px;
 }
 
-.loading-spinner {
-
-}
-
 .adding-spinner-container {
   padding: 16px;
-    margin: auto;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
+  margin: auto;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .spinner-container {
